@@ -1,8 +1,10 @@
+import PropTypes from "prop-types";
+
 const App = () => {
   const items = [
     { name: "T-shirt", size: "M" },
     { name: "Cap", size: "Free" },
-    { name: "NoImage" }
+    { name: "NoImage", size: "Free" }
   ];
   return (
     <div>
@@ -21,8 +23,9 @@ const Item = props => {
   );
 };
 
-Item.defaultProps = {
-  size: "FREE"
+Item.propTypes = {
+  name: PropTypes.string,
+  size: PropTypes.string.isRequired
 };
 
 export default App;
