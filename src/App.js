@@ -1,32 +1,28 @@
-// function App() {
-//   const greeting = "Hello World";
-//   const dom = <h1>{greeting}</h1>;
-//   return dom;
-// }
-
-// function App() {
-//   return (
-//     <input
-//       type="text"
-//       onClick={() => {
-//         console.log("I am Changed!");
-//       }}
-//     />
-//   );
-
 const App = () => {
+  const items = [
+    { name: "T-shirt", size: "M" },
+    { name: "Cap", size: "Free" },
+    { name: "NoImage" }
+  ];
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {items.map((item, index) => {
+        return <Item name={item.name} size={item.size} key={index}></Item>;
+      })}
     </div>
   );
 };
 
-const Cat = () => {
-  return <div>Meow!</div>;
+const Item = props => {
+  return (
+    <div>
+      This is a {props.name}! This size is {props.size}.
+    </div>
+  );
+};
+
+Item.defaultProps = {
+  size: "FREE"
 };
 
 export default App;
