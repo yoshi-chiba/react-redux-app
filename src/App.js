@@ -4,15 +4,29 @@
 //   return dom;
 // }
 
-function App() {
+// function App() {
+//   return (
+//     <input
+//       type="text"
+//       onClick={() => {
+//         console.log("I am Changed!");
+//       }}
+//     />
+//   );
+
+const App = () => {
   return (
-    <input
-      type="text"
-      onClick={() => {
-        console.log("I am Changed!");
-      }}
-    />
+    <div>
+      <Cat />
+      <Cat />
+      <Cat />
+      <Cat />
+    </div>
   );
-}
+};
+
+const Cat = () => {
+  return <div>Meow!</div>;
+};
 
 export default App;
