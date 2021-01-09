@@ -1,31 +1,32 @@
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 
 const App = () => {
-  const items = [
-    { name: "T-shirt", size: "M" },
-    { name: "Cap", size: "Free" },
-    { name: "NoImage", size: "Free" }
-  ];
-  return (
-    <div>
-      {items.map((item, index) => {
-        return <Item name={item.name} size={item.size} key={index}></Item>;
-      })}
-    </div>
-  );
+  return <Counter></Counter>;
 };
 
-const Item = props => {
-  return (
-    <div>
-      This is a {props.name}! This size is {props.size}.
-    </div>
-  );
-};
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
 
-Item.propTypes = {
-  name: PropTypes.string,
-  size: PropTypes.string.isRequired
-};
+  handlePlusButton = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  handleMinusButton = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <div>count: {this.state.count}</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
+      </React.Fragment>
+    );
+  }
+}
 
 export default App;
