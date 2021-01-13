@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import count from "./count";
+import events from "./events";
 
 // 通常複数のreducerを記述する
 // その場合は「export default combineReducers({ count, foo, bar })」のようになる
-export default combineReducers({ count });
+export default combineReducers({ events });

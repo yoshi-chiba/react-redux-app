@@ -1,23 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
 // storeを作成するためのパッケージ
-import { createStore } from "redux";
+// thunkはMiddleWareに該当するので、そのMiddleWareを適用するための関数をreduxからimport
+import { createStore, applyMiddleware } from "redux";
 // 作成したstoreを全コンポーネントに渡す機能を持つパッケージ
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+
 import "./index.css";
 // 作成したreducerをimport
 import reducer from "./reducers";
-import App from "./components/App";
+import EventsIndex from "./components/events_index";
 import reportWebVitals from "./reportWebVitals";
 
 // storeを作成
 // アプリケーション内部の全てのstateはここに集約される
-const store = createStore(reducer);
+// 第二引数にapplyMiddleware(thunk)を記述することで、storeの中に組み込むことができる
+const store = createStore(reducer, applyMiddleware(thunk));
 
 // providerでコンポーネントを囲み、storeを渡すことで全コンポーネントでstoreを使用することが可能
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <EventsIndex />
   </Provider>,
   document.getElementById("root")
 );
